@@ -18,3 +18,7 @@ jobs:
           cache: maven
       - name: Run tests
         run: mvn -B verify
+      - name: Generate Javadoc
+        run: mvn -B javadoc:javadoc
+      - name: Run complete training and generation example
+        run: mvn -B exec:java -Dexec.mainClass=com.javiergs.llm.training.TrainAndGenerateExample
