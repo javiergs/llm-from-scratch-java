@@ -28,7 +28,7 @@ The example shows each head's causal attention probability matrix. Both matrices
 
 ## Educational notes
 
-- All four projection matrices are initialized randomly and are **not trained yet**.
+- All four projection matrices are initialized randomly in this standalone example. [Lesson 19](19-training-loop.md) trains a complete model.
 - This implementation uses ND4J for matrix multiplication and explicit Java loops for causal softmax, prioritizing readability over speed.
 - Different heads can learn different relationships once training is implemented.
 - No dropout, batching, or key/value caching is included in this lesson.
