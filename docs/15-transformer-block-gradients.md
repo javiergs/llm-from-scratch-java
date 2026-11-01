@@ -27,4 +27,4 @@ Run `mvn verify`. A test checks that gradients propagate through both residual b
 
 ## Scope
 
-`TransformerBlockGradients` receives explicit weight matrices because the current model does not expose trainable parameter references. The next integration step will connect backward calculations to the actual model parameters and introduce an optimizer.
+`TransformerBlockGradients` receives explicit weight matrices to make the chain rule visible without mutating model state. [Lesson 16](16-trainable-model-parameters.md) exposes parameter copies and replacement, while [Lessons 17–19](17-stochastic-gradient-descent.md) cover optimization and training.
