@@ -1,9 +1,8 @@
 # LLM from Scratch in Java
 
+![Java 21+](https://img.shields.io/badge/Java-21%2B-blue)
+![Version 0.1.0-SNAPSHOT](https://img.shields.io/badge/version-0.1.0--SNAPSHOT-green)
 [![Java CI](https://github.com/javiergs/llm-from-scratch-java/actions/workflows/ci.yml/badge.svg)](https://github.com/javiergs/llm-from-scratch-java/actions/workflows/ci.yml)
-![Java 21](https://img.shields.io/badge/Java-21-blue)
-![Maven](https://img.shields.io/badge/build-Maven-blue)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 An educational GPT-style language model built from scratch with **Java 21**, **Maven**, and **ND4J**.
 
