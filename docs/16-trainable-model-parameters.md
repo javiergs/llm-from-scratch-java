@@ -32,4 +32,4 @@ Run `mvn verify`. Tests confirm defensive copies, explicit updates, and rejectio
 
 ## Scope
 
-This lesson provides parameter access and replacement, **not** end-to-end gradient collection or training. Future lessons will connect the existing backward calculations to these parameters and add an optimizer.
+This lesson provides parameter access and replacement, **not** end-to-end gradient collection or training. [Lesson 18](18-end-to-end-model-gradients.md) connects backward calculations to these parameters; [Lesson 17](17-stochastic-gradient-descent.md) introduces the optimizer.
