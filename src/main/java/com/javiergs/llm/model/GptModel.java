@@ -102,4 +102,48 @@ public final class GptModel {
     public int dimension() {
         return dimension;
     }
+    /**
+     * Returns independent copies of all trainable matrices. The order is
+     * token embeddings, positional embeddings, six projections per block,
+     * and finally the vocabulary output projection.
+     *
+     * @return model parameter copies
+     */
+    public INDArray[] parameters() {
+        java.util.List<INDArray> result = new java.util.ArrayList<>();
+        result.add(tokens.weights());
+        result.add(positions.weights());
+        for (TransformerBlock block : blocks) {
+            java.util.Collections.addAll(result, block.parameters());
+        }
+        result.add(outputWeights.dup());
+        return result.toArray(new INDArray[0]);
+    }
+
+    /**
+     * Replaces model weights using shape-validated defensive copies.
+     * Intended for educational optimizers in later lessons.
+     *
+     * @param parameters weights in the order returned by parameters()
+     */
+    public void setParameters(INDArray[] parameters) {
+        INDArray[] current = parameters();
+        if (parameters == null || parameters.length != current.length) {
+            throw new IllegalArgumentException("Incorrect model parameter count");
+        }
+        for (int i = 0; i < current.length; i++) {
+            if (parameters[i] == null || !java.util.Arrays.equals(
+                    parameters[i].shape(), current[i].shape())) {
+                throw new IllegalArgumentException("Incorrect parameter shape at index " + i);
+            }
+        }
+        tokens.setWeights(parameters[0]);
+        positions.setWeights(parameters[1]);
+        for (int i = 0; i < blocks.length; i++) {
+            blocks[i].setParameters(java.util.Arrays.copyOfRange(parameters,
+                    2 + 6 * i, 2 + 6 * (i + 1)));
+        }
+        outputWeights.assign(parameters[parameters.length - 1]);
+    }
+
 }
