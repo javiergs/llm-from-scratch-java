@@ -41,4 +41,38 @@ public final class TransformerBlock {
         INDArray afterAttention = input.add(attention.forward(attentionNormalization.forward(input)));
         return afterAttention.add(feedForward.forward(feedForwardNormalization.forward(afterAttention)));
     }
+    /**
+     * Returns copies of six trainable projection matrices in Q, K, V,
+     * attention output, feed-forward input, feed-forward output order.
+     *
+     * @return six independent matrix copies
+     */
+    public INDArray[] parameters() {
+        INDArray[] attentionParameters = attention.parameters();
+        INDArray[] feedForwardParameters = feedForward.parameters();
+        return new INDArray[]{attentionParameters[0], attentionParameters[1],
+                attentionParameters[2], attentionParameters[3],
+                feedForwardParameters[0], feedForwardParameters[1]};
+    }
+
+    /**
+     * Replaces all six projections using shape-validated copies.
+     *
+     * @param parameters six matrices in the order returned by parameters()
+     */
+    public void setParameters(INDArray[] parameters) {
+        if (parameters == null || parameters.length != 6) {
+            throw new IllegalArgumentException("Expected six transformer matrices");
+        }
+        INDArray[] current = parameters();
+        for (int i = 0; i < 6; i++) {
+            if (parameters[i] == null || !java.util.Arrays.equals(
+                    parameters[i].shape(), current[i].shape())) {
+                throw new IllegalArgumentException("Invalid transformer matrix at index " + i);
+            }
+        }
+        attention.setParameters(java.util.Arrays.copyOfRange(parameters, 0, 4));
+        feedForward.setParameters(java.util.Arrays.copyOfRange(parameters, 4, 6));
+    }
+
 }
