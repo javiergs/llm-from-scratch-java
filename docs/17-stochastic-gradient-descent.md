@@ -18,7 +18,7 @@ INDArray[] gradients = /* derivatives in model.parameters() order */;
 optimizer.step(model, gradients);
 ```
 
-The `gradients` array is **not yet generated automatically** by `GptModel`. A later lesson will connect the existing backward rules to produce it from next-token prediction loss.
+The `gradients` array is supplied explicitly to the optimizer. [Lesson 18](18-end-to-end-model-gradients.md) shows how to compute it from next-token prediction loss.
 
 The optimizer checks gradient shapes and non-finite values before changing the model. Parameter arrays returned by `model.parameters()` are defensive copies.
 
@@ -28,4 +28,4 @@ Run `mvn verify`. Tests verify the update equation, a decrease in a simple quadr
 
 ## Scope
 
-SGD is intentionally minimal: no momentum, Adam, learning-rate scheduling, or automatic differentiation. **This lesson does not yet train the GPT model on text.**
+SGD is intentionally minimal: no momentum, Adam, learning-rate scheduling, or automatic differentiation. **This lesson isolates the optimizer.** See [Lesson 21](21-train-and-generate.md) for a complete training-and-generation example.
