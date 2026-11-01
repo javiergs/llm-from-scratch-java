@@ -8,7 +8,7 @@ a = GELU(z)
 y = a × W2
 ```
 
-Our forward implementation uses the **tanh approximation** of GELU, so the backward pass differentiates that same approximation.
+The forward implementation uses the **tanh approximation** of GELU, so the backward pass differentiates that same approximation.
 
 ## Backward pass
 
@@ -37,4 +37,4 @@ Run `mvn verify`. JUnit compares gradients for the input, first projection, and 
 
 ## Scope
 
-The `FeedForwardGradients` class demonstrates the local backward pass using explicit weight matrices. The existing `FeedForward` class and model weights remain unchanged; parameter updates and end-to-end training will be added in later lessons.
+The `FeedForwardGradients` class demonstrates the local backward pass using explicit weight matrices. The existing `FeedForward` class and model weights remain unchanged; parameter updates and end-to-end training are demonstrated in [Lessons 18–19](18-end-to-end-model-gradients.md).
