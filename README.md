@@ -23,7 +23,6 @@ The repository builds a small **decoder-only GPT-style language model** in incre
 9. [Output projection gradients](docs/09-output-projection-gradients.md)
 10. [Embedding gradients](docs/10-embedding-gradients.md)
 11. [Layer normalization gradients](docs/11-layer-normalization-gradients.md)
-
 12. [Feed-forward network gradients](docs/12-feed-forward-gradients.md)
 13. [Causal self-attention gradients](docs/13-causal-attention-gradients.md)
 14. [Multi-head attention gradients](docs/14-multi-head-attention-gradients.md)
@@ -37,24 +36,32 @@ The repository builds a small **decoder-only GPT-style language model** in incre
 
 **Current scope:** This repository implements a complete educational character-level GPT training and generation pipeline. It uses small datasets and a simple SGD optimizer; it is not a pretrained or production-scale language model.
 
-## Run
+## Get started
 
-Requires **Java 21+** and **Maven 3.9+**.
+Requires **Java 21+** and **Maven 3.9+**. Clone the repository, then run the tests:
 
 ```bash
 mvn verify
+```
+
+For a first look at ND4J matrix operations, run:
+
+```bash
 mvn exec:java -Dexec.mainClass=com.javiergs.llm.MatrixExample
 ```
 
-The first command runs the JUnit test suite. The second runs the introductory ND4J matrix example. Follow the linked lessons for the model components and their examples.
-
-
-## Train and generate
-
-Run the complete character-level demonstration:
+For the **complete training and generation demonstration**, run:
 
 ```bash
 mvn exec:java -Dexec.mainClass=com.javiergs.llm.training.TrainAndGenerateExample
 ```
 
-The program prints training loss by epoch and generates text from a short prompt. See [Lesson 21](docs/21-train-and-generate.md) for the walkthrough.
+This example builds a vocabulary from a tiny repeated-character corpus, trains a small GPT-style model, prints training loss after each epoch, and generates characters from a prompt. See [Lesson 21](docs/21-train-and-generate.md) for the walkthrough.
+
+## What this project does not do
+
+- It does **not** download or use pretrained model weights.
+- It does **not** train on a large natural-language corpus or demonstrate general language understanding.
+- It does **not** include production features such as checkpointing, batching, or efficient cached inference.
+
+The goal is to make the essential algorithms inspectable and understandable in Java, one lesson at a time.
