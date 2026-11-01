@@ -21,11 +21,11 @@ The example uses a four-dimensional vector for each character in `Hello LLM!`. T
 
 ## What ND4J does
 
-ND4J stores embedding weights as an `INDArray`. This lesson explicitly performs the lookup rather than using a pretrained embedding model. We use a fixed seed and small random initial values for reproducible results.
+ND4J stores embedding weights as an `INDArray`. This lesson explicitly performs the lookup rather than using a pretrained embedding model. The example uses a fixed seed and small random initial values for reproducible results.
 
 ## Important limitation
 
-These are **randomly initialized, untrained embeddings**. They do not yet encode semantic similarity. During training, an optimizer will update the embedding weights through gradients; this lesson only implements the forward pass.
+These are **randomly initialized, untrained embeddings**. They do not encode learned semantic similarity until trained. [Lessons 18–19](18-end-to-end-model-gradients.md) connect gradients and optimization to the complete model; this lesson focuses on the forward lookup.
 
 ## Exercise
 
