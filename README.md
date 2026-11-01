@@ -22,11 +22,3 @@ The first example demonstrates ND4J matrix multiplication, verified with JUnit.
 Character tokenization → BPE → embeddings → self-attention → multi-head attention → transformer blocks → GPT → training and text generation.
 
 Training will require an explicit gradient strategy beyond ND4J tensor operations.
-
-## Inspiration
-
-Inspired by Sebastian Raschka's [LLMs from Scratch](https://github.com/rasbt/LLMs-from-scratch). This is an independent Java implementation, not a line-by-line translation.
-
-## License
-
-MIT. See [LICENSE](LICENSE).
