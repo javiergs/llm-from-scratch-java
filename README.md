@@ -8,15 +8,6 @@ ND4J handles numerical tensor operations; the model algorithms are implemented i
 
 Java 21 and Maven 3.9+.
 
-## Run
-
-```bash
-mvn verify
-mvn exec:java -Dexec.mainClass=com.javiergs.llm.MatrixExample
-```
-
-The first example demonstrates ND4J matrix multiplication, verified with JUnit.
-
 ## Roadmap
 
 The project builds a small GPT-style language model step by step:
@@ -31,3 +22,13 @@ The project builds a small GPT-style language model step by step:
 8. **Text generation (planned):** Repeatedly predict and select the next token to extend a prompt.
 
 **Training note:** ND4J provides tensor operations, but training also requires an explicit gradient-computation and optimization strategy. The current model implements the forward pass; its weights are not yet trained.
+
+
+## Run
+
+```bash
+mvn verify
+mvn exec:java -Dexec.mainClass=com.javiergs.llm.MatrixExample
+```
+
+The first example demonstrates ND4J matrix multiplication, verified with JUnit.
