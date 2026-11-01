@@ -39,4 +39,4 @@ Run `mvn verify`. The tests compare input and all four weight gradients against 
 
 ## Scope
 
-This is an educational standalone backward calculation. The model does not yet update weights or train end to end. The next lesson will connect the local backward rules within a transformer block.
+This is an educational standalone backward calculation. The calculations are integrated into a transformer block in [Lesson 15](15-transformer-block-gradients.md) and into complete model training in [Lessons 18–19](18-end-to-end-model-gradients.md).
