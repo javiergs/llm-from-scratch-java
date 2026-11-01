@@ -88,4 +88,16 @@ public final class PositionalEmbedding {
     public INDArray weights() {
         return weights.dup();
     }
+    /**
+     * Replaces the positional embedding table after checking its shape.
+     *
+     * @param replacement new positional weights
+     */
+    public void setWeights(INDArray replacement) {
+        if (replacement == null || !java.util.Arrays.equals(replacement.shape(), weights.shape())) {
+            throw new IllegalArgumentException("Invalid positional embedding shape");
+        }
+        weights.assign(replacement);
+    }
+
 }

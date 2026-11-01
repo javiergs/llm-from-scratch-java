@@ -72,4 +72,29 @@ public final class FeedForward {
         }
         return Nd4j.create(activated).mmul(outputWeights);
     }
+    /**
+     * Returns defensive copies of the two projection matrices.
+     *
+     * @return first and second projection weights
+     */
+    public INDArray[] parameters() {
+        return new INDArray[]{inputWeights.dup(), outputWeights.dup()};
+    }
+
+    /**
+     * Replaces feed-forward weights after validating their shapes.
+     *
+     * @param parameters first and second projection weights
+     */
+    public void setParameters(INDArray[] parameters) {
+        if (parameters == null || parameters.length != 2
+                || parameters[0] == null || parameters[1] == null
+                || !java.util.Arrays.equals(parameters[0].shape(), inputWeights.shape())
+                || !java.util.Arrays.equals(parameters[1].shape(), outputWeights.shape())) {
+            throw new IllegalArgumentException("Expected two correctly shaped feed-forward matrices");
+        }
+        inputWeights.assign(parameters[0]);
+        outputWeights.assign(parameters[1]);
+    }
+
 }

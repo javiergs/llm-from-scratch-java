@@ -125,4 +125,35 @@ public final class MultiHeadAttention {
             throw new IllegalArgumentException("Expected nonempty rank-2 input with width " + dimension);
         }
     }
+    /**
+     * Returns defensive copies of query, key, value, and output projections.
+     *
+     * @return four matrices in Q, K, V, output order
+     */
+    public INDArray[] parameters() {
+        return new INDArray[]{queryWeights.dup(), keyWeights.dup(),
+                valueWeights.dup(), outputWeights.dup()};
+    }
+
+    /**
+     * Replaces the four projection matrices after validating their shapes.
+     *
+     * @param parameters matrices in Q, K, V, output order
+     */
+    public void setParameters(INDArray[] parameters) {
+        if (parameters == null || parameters.length != 4) {
+            throw new IllegalArgumentException("Expected four attention matrices");
+        }
+        INDArray[] destinations = {queryWeights, keyWeights, valueWeights, outputWeights};
+        for (int i = 0; i < 4; i++) {
+            if (parameters[i] == null || !java.util.Arrays.equals(
+                    parameters[i].shape(), destinations[i].shape())) {
+                throw new IllegalArgumentException("Invalid attention parameter shape at index " + i);
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            destinations[i].assign(parameters[i]);
+        }
+    }
+
 }

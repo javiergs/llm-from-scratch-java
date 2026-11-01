@@ -81,4 +81,16 @@ public final class TokenEmbedding {
     public int dimension() {
         return dimension;
     }
+    /**
+     * Replaces the embedding table after checking its shape.
+     *
+     * @param replacement new embedding weights
+     */
+    public void setWeights(INDArray replacement) {
+        if (replacement == null || !java.util.Arrays.equals(replacement.shape(), weights.shape())) {
+            throw new IllegalArgumentException("Invalid token embedding shape");
+        }
+        weights.assign(replacement);
+    }
+
 }
