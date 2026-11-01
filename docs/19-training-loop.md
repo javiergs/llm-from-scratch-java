@@ -1,6 +1,6 @@
 # Lesson 19: Training a GPT-style model
 
-The complete learning cycle consists of forward pass, next-token loss, analytical gradients, and SGD parameter updates.
+The complete learning cycle consists of a forward pass, next-token loss, analytical gradients, and SGD parameter updates.
 
 A **training epoch** processes every sequence once. Each sequence produces one SGD update. At the end of an epoch, the trainer evaluates mean cross-entropy on the supplied training examples.
 
