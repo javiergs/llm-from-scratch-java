@@ -24,11 +24,18 @@ The repository builds a small **decoder-only GPT-style language model** in incre
 10. [Embedding gradients](docs/10-embedding-gradients.md)
 11. [Layer normalization gradients](docs/11-layer-normalization-gradients.md)
 
-**In review:** [Lesson 12 — feed-forward network gradients](https://github.com/javiergs/llm-from-scratch-java/pull/17).
+12. [Feed-forward network gradients](docs/12-feed-forward-gradients.md)
+13. [Causal self-attention gradients](docs/13-causal-attention-gradients.md)
+14. [Multi-head attention gradients](docs/14-multi-head-attention-gradients.md)
+15. [Transformer block gradients](docs/15-transformer-block-gradients.md)
+16. [Trainable model parameters](docs/16-trainable-model-parameters.md)
+17. [Stochastic gradient descent](docs/17-stochastic-gradient-descent.md)
+18. [End-to-end GPT gradients](docs/18-end-to-end-model-gradients.md)
+19. [Training loop](docs/19-training-loop.md)
+20. [Autoregressive text generation](docs/20-text-generation.md)
+21. [Complete training and generation example](docs/21-train-and-generate.md)
 
-**Coming next:** backward passes for attention and complete transformer blocks; an optimizer and training loop; text generation; and optionally byte-pair encoding (BPE).
-
-> **Current scope:** The model performs a complete forward pass and computes loss. Lessons 9–12 introduce standalone analytical gradients, but they are **not yet connected into end-to-end training**. Weights remain randomly initialized; this project does not yet train a language model.
+**Current scope:** This repository implements a complete educational character-level GPT training and generation pipeline. It uses small datasets and a simple SGD optimizer; it is not a pretrained or production-scale language model.
 
 ## Run
 
@@ -41,3 +48,13 @@ mvn exec:java -Dexec.mainClass=com.javiergs.llm.MatrixExample
 
 The first command runs the JUnit test suite. The second runs the introductory ND4J matrix example. Follow the linked lessons for the model components and their examples.
 
+
+## Train and generate
+
+Run the complete character-level demonstration:
+
+```bash
+mvn exec:java -Dexec.mainClass=com.javiergs.llm.training.TrainAndGenerateExample
+```
+
+The program prints training loss by epoch and generates text from a short prompt. See [Lesson 21](docs/21-train-and-generate.md) for the walkthrough.
