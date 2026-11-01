@@ -20,6 +20,7 @@ public final class GptModel {
     private final int vocabularySize;
     private final int contextLength;
     private final int dimension;
+    private final int heads;
     private final TokenEmbedding tokens;
     private final PositionalEmbedding positions;
     private final TransformerBlock[] blocks;
@@ -47,6 +48,7 @@ public final class GptModel {
         this.vocabularySize = vocabularySize;
         this.contextLength = contextLength;
         this.dimension = dimension;
+        this.heads = heads;
         tokens = new TokenEmbedding(vocabularySize, dimension, seed);
         positions = new PositionalEmbedding(contextLength, dimension, seed + 1);
         blocks = new TransformerBlock[layers];
@@ -144,6 +146,37 @@ public final class GptModel {
                     2 + 6 * i, 2 + 6 * (i + 1)));
         }
         outputWeights.assign(parameters[parameters.length - 1]);
+    }
+
+    /**
+     * Returns intermediate hidden states, starting after embeddings and ending
+     * after the final transformer block. Used for educational backpropagation.
+     *
+     * @param tokenIds input token IDs
+     * @return independent hidden-state copies, one per block boundary
+     */
+    public INDArray[] hiddenStates(int[] tokenIds) {
+        if (tokenIds == null) {
+            throw new NullPointerException("tokenIds");
+        }
+        if (tokenIds.length == 0 || tokenIds.length > contextLength) {
+            throw new IllegalArgumentException("Invalid sequence length");
+        }
+        INDArray[] states = new INDArray[blocks.length + 1];
+        states[0] = positions.addTo(tokens.forward(tokenIds));
+        for (int i = 0; i < blocks.length; i++) {
+            states[i + 1] = blocks[i].forward(states[i]);
+        }
+        return states;
+    }
+
+    /**
+     * Returns the number of attention heads per block.
+     *
+     * @return attention head count
+     */
+    public int heads() {
+        return heads;
     }
 
 }
