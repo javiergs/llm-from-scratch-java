@@ -15,7 +15,7 @@ The last row has no target and therefore contributes a row of zeros. We use maxi
 
 ## Step 2: Linear projection
 
-Our output layer computes:
+The output layer computes:
 
 ```text
 logits = hiddenStates × weights
@@ -42,4 +42,4 @@ Finite differences are useful as tests, not as an efficient way to train a langu
 
 ## Scope
 
-This lesson introduces **standalone gradient calculations**. It does not modify `GptModel`, expose its private parameters, update any weights, or implement full-model training. Later lessons will connect backward passes and add an optimizer.
+This lesson isolates **output-projection gradient calculations** without modifying model parameters. [Lesson 18](18-end-to-end-model-gradients.md) connects these calculations to the complete model, and [Lesson 19](19-training-loop.md) trains it.
