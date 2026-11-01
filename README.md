@@ -8,7 +8,40 @@ An educational GPT-style language model built from scratch with **Java 21**, **M
 
 ND4J handles numerical tensor operations; the model algorithms are implemented in Java rather than delegated to a pretrained model API.
 
+## Get started
+
+**Recommended preparation:** Basic Java programming, arrays, matrix multiplication, and familiarity with Maven. Knowledge of neural networks is helpful but not required.
+
+Requires **Java 21+** and **Maven 3.9+**. Clone the repository, then run the tests:
+
+```bash
+git clone https://github.com/javiergs/llm-from-scratch-java.git
+cd llm-from-scratch-java
+```
+
+Run the JUnit tests:
+
+```bash
+mvn verify
+```
+
+For a first look at ND4J matrix operations, run:
+
+```bash
+mvn exec:java -Dexec.mainClass=com.javiergs.llm.MatrixExample
+```
+
+For the **complete training and generation demonstration**, run:
+
+```bash
+mvn exec:java -Dexec.mainClass=com.javiergs.llm.training.TrainAndGenerateExample
+```
+
+This example builds a vocabulary from a tiny repeated-character corpus, trains a small GPT-style model, prints training loss after each epoch, and generates characters from a prompt. See [Lesson 21](docs/21-train-and-generate.md) for the walkthrough.
+
 ## Learning path
+
+**New to the project?** Start with [Lesson 1](docs/01-character-tokenization.md) and follow the lessons in order. Each lesson introduces a specific concept; the final lesson demonstrates the complete workflow.
 
 The repository builds a small **decoder-only GPT-style language model** in incremental lessons. Start with the forward pass, then learn how gradients make training possible.
 
@@ -35,28 +68,6 @@ The repository builds a small **decoder-only GPT-style language model** in incre
 21. [Complete training and generation example](docs/21-train-and-generate.md)
 
 **Current scope:** This repository implements a complete educational character-level GPT training and generation pipeline. It uses small datasets and a simple SGD optimizer; it is not a pretrained or production-scale language model.
-
-## Get started
-
-Requires **Java 21+** and **Maven 3.9+**. Clone the repository, then run the tests:
-
-```bash
-mvn verify
-```
-
-For a first look at ND4J matrix operations, run:
-
-```bash
-mvn exec:java -Dexec.mainClass=com.javiergs.llm.MatrixExample
-```
-
-For the **complete training and generation demonstration**, run:
-
-```bash
-mvn exec:java -Dexec.mainClass=com.javiergs.llm.training.TrainAndGenerateExample
-```
-
-This example builds a vocabulary from a tiny repeated-character corpus, trains a small GPT-style model, prints training loss after each epoch, and generates characters from a prompt. See [Lesson 21](docs/21-train-and-generate.md) for the walkthrough.
 
 ## What this project does not do
 

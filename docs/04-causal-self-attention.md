@@ -32,7 +32,7 @@ The example connects the preceding lessons: text → token IDs → token vectors
 
 ## Scope and next step
 
-This lesson implements a **single head** with equal input, query/key, and value dimensions. Multi-head attention will split attention across several heads in the next lesson.
+This lesson implements a **single head** with equal input, query/key, and value dimensions. [Lesson 5](05-multi-head-attention.md) extends this idea by splitting attention across several heads.
 
 ## Exercise
 

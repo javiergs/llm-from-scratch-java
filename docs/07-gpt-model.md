@@ -33,13 +33,13 @@ For a sequence of length `T` and vocabulary size `V`, the model returns a matrix
 
 During training, each position's logits will be compared with the **following token** using cross-entropy loss. For example, input `[a,b,c]` predicts targets `[b,c,d]`.
 
-## Why no generated text yet?
+## Why are the example's predictions untrained?
 
-Without training, logits are arbitrary. A later lesson will add a loss function, gradient-based optimization, and then autoregressive generation.
+The example initializes random weights, so its logits are not meaningful language predictions. For a trained model and generated characters, follow [Lesson 21](21-train-and-generate.md).
 
 ## Limitations
 
-This educational model currently handles one sequence at a time, uses character-level tokens, and does not support dropout, batching, saved checkpoints, or a training loop. The vocabulary projection has independent weights rather than being tied to the token embedding table.
+This educational model processes one sequence at a time, uses character-level tokens, and does not support dropout, batching, or saved checkpoints. A training loop is available in [Lesson 19](19-training-loop.md). The vocabulary projection has independent weights rather than being tied to the token embedding table.
 
 ## Exercise
 

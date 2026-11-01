@@ -1,6 +1,6 @@
 # Lesson 18: End-to-end GPT gradients
 
-We can now connect all earlier backward rules into one chain:
+The complete backward pass connects the earlier gradient rules in this sequence:
 
 1. Look up token and position embeddings.
 2. Run each pre-normalization transformer block, retaining intermediate states.
@@ -23,7 +23,7 @@ double after = GptModelGradients.loss(model, sequence);
 System.out.println("Loss: " + before + " -> " + after);
 ```
 
-This is the first lesson that connects next-token loss to **all** model parameters. The model still needs a reusable training loop, dataset handling, and text generation.
+This is the first lesson that connects next-token loss to **all** model parameters. [Lesson 19](19-training-loop.md) adds the reusable training loop, and [Lesson 21](21-train-and-generate.md) demonstrates training and text generation.
 
 ## Verify
 

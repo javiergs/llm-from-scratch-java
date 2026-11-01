@@ -26,7 +26,7 @@ mvn exec:java -Dexec.mainClass=com.javiergs.llm.transformer.TransformerBlockExam
 
 ## Limitations
 
-- Parameters are randomly initialized; there is no training yet.
+- Parameters are randomly initialized in this standalone example. See [Lesson 19](19-training-loop.md) for training the assembled model.
 - Layer normalization uses its initial affine parameters (scale 1, shift 0) without trainable parameter updates.
 - No dropout, batching, or optimizer is implemented.
 - The implementation prioritizes clarity over vectorized performance.
