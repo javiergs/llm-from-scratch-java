@@ -48,4 +48,4 @@ Run `mvn verify`. JUnit compares all four gradients (input, query weights, key w
 
 ## Scope
 
-This lesson covers **single-head attention**. Multi-head attention additionally slices Q/K/V into heads, concatenates their outputs, and applies an output projection. That backward pass will be introduced separately. The model is not yet trainable.
+This lesson covers **single-head attention**. Multi-head attention additionally slices Q/K/V into heads, concatenates their outputs, and applies an output projection. [Lesson 14](14-multi-head-attention-gradients.md) covers the multi-head backward pass. [Lesson 19](19-training-loop.md) demonstrates training the complete model.
