@@ -2,7 +2,7 @@
 
 ![Java 21+](https://img.shields.io/badge/Java-21%2B-blue)
 ![Version 0.1.0](https://img.shields.io/badge/version-0.1.0-green)
-[![Java CI](https://github.com/javiergs/llm-from-scratch-java/actions/workflows/ci.yml/badge.svg)](https://github.com/javiergs/llm-from-scratch-java/actions/workflows/ci.yml)
+[![Java CI](https://github.com/javiergs/llm-from-scratch-java/actions/workflows/java-ci.yml/badge.svg)](https://github.com/javiergs/llm-from-scratch-java/actions/workflows/java-ci.yml)
 
 An educational GPT-style language model built from scratch with **Java 21**, **Maven**, and **ND4J**.
 
